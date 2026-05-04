@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CIHE Internship Platform</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar-row">
+      <div class="brand">
+        <h1>CIHE Internship Platform</h1>
+        <div class="subtitle">Automated Aggregation &amp; Matching</div>
+      </div>
+      <nav class="top-nav">
+        <button class="btn outline" onclick="showPage('landingPage')">Home</button>
+        <button id="authBtn" class="btn primary" onclick="showLogin()">Login</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ── LANDING ── -->
+  <main id="landingPage" class="page-shell">
+    <div class="hero-wrap">
+      <div class="hero">
+        <div class="hero-card">
+          <div class="hero-title">Connecting CIHE Students&nbsp;with Industry.</div>
+          <p class="hero-text">A governed ecosystem for internship discovery, automated matching, and streamlined approval workflows.</p>
+          <button class="btn primary" onclick="showLogin()">Get Started</button>
+        </div>
+        <div class="hero-side hero-card">
+          <h3>Platform Stats</h3>
+          <div class="stats-grid">
+            <div class="stat-card"><span class="stat-icon">🎯</span><div class="stat-number">24</div><div class="stat-title">Smart Matches</div></div>
+            <div class="stat-card"><span class="stat-icon">🏢</span><div class="stat-number">12</div><div class="stat-title">Employers</div></div>
+            <div class="stat-card"><span class="stat-icon">📋</span><div class="stat-number">5</div><div class="stat-title">Listings</div></div>
+            <div class="stat-card"><span class="stat-icon">🎓</span><div class="stat-number">80+</div><div class="stat-title">Students</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── LOGIN ── -->
+  <section id="loginPage" class="hidden">
+    <div class="auth-wrap">
+      <div class="login-card">
+        <div class="login-left">
+          <h2>Secure Portal Access</h2>
+          <p>Sign in to manage your professional internship journey.</p>
+          <ul class="login-hints">
+            <li>Student — any email</li>
+            <li>Admin — include "admin"</li>
+            <li>Employer — include "employer"</li>
+          </ul>
+        </div>
+        <div class="login-right">
+          <h3>Sign In</h3>
+          <form id="loginForm" class="login-form">
+            <div class="form-group">
+              <label>Email Address</label>
+              <input id="emailInput" type="email" placeholder="you@cihe.edu" required oninput="detectRole()" />
+            </div>
+            <div id="roleDetectionContainer" class="role-detection-box">
+              <label class="role-detection-label">Detected Role</label>
+              <div id="detectedRoleDisplay" class="role-detection-display">Student</div>
+            </div>
+            <button type="submit" class="btn primary" style="width:100%">Sign In →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── DASHBOARD ── -->
+  <section id="dashboardPage" class="hidden">
+    <div class="layout">
+      <aside class="sidebar">
+        <div id="navContainer" class="nav"></div>
+      </aside>
+      <main class="main-content" id="dashboardContent"></main>
+    </div>
+  </section>
+
+  <!-- ── INTERNSHIP DETAIL ── -->
+  <section id="internshipDetailsPage" class="hidden">
+    <div class="detail-container">
+      <button class="btn outline back-btn" onclick="goBack()">← Back</button>
+      <div id="internshipDetail"></div>
+    </div>
+  </section>
+
+  <!-- ── PROFILE ── -->
+  <section id="profilePage" class="hidden">
+    <div class="profile-container">
+      <button class="btn outline back-btn" onclick="goBack()">← Back</button>
+      <div id="profileContent"></div>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p>&copy; 2026 CIHE Internship Platform | Developed by Tanvir</p>
+      <div class="footer-links">
+        <span>Privacy Policy</span> &bull; <span>Terms of Service</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- db.js MUST load before script.js -->
+  <script src="db.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
