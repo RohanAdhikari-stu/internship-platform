@@ -11,14 +11,23 @@ let APP = {
 };
 
 // ── Boot ──────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  // Seed internships into localStorage if first visit
-  if (!localStorage.getItem('cihe_internships')) {
-    saveInternships([...SEED_INTERNSHIPS]);
+window.addEventListener('DOMContentLoaded', async () => {
+  // Load internships from server instead of localStorage
+  try {
+    const response = await fetch('/api/internships');
+    const data = await response.json();
+    APP.internships = data;
+    // Keep a local copy in sync so existing helpers still work
+    saveInternships(data);
+  } catch (err) {
+    console.warn('Server unavailable, falling back to localStorage seed.');
+    if (!localStorage.getItem('cihe_internships')) {
+      saveInternships([...SEED_INTERNSHIPS]);
+    }
+    APP.internships = getInternships();
   }
 
-  APP.internships = getInternships();
-  APP.user        = getUser();
+  APP.user = getUser();
 
   // Wire up login form
   document.getElementById('loginForm').onsubmit = handleLogin;
