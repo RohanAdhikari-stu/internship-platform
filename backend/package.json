@@ -1,0 +1,15 @@
+{
+  "name": "cihe-backend",
+  "version": "1.0.0",
+  "description": "Backend API for CIHE Internship Platform",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.2",
+    "express": "^5.2.1",
+    "mongoose": "^7.6.0"
+  }
+}
