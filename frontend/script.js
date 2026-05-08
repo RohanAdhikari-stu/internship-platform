@@ -435,7 +435,7 @@ async function saveProfile() {
     skills: document.getElementById('pSkills').value.split(',').map(s => s.trim()).filter(Boolean)
   };
 
-  const response = await fetch('http://localhost:3000/api/students', {
+  const response = await fetch('https://internship-platform-pcz8.onrender.com/api/students', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(profileData)
